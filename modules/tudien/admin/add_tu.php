@@ -15,9 +15,9 @@ if (!defined('NV_IS_TUDIEN')) {
 
 
 
-$page_title = 'Thêm loại từ điển';
+$page_title = 'Thêm từ';
 
-$xtpl = new XTemplate('add.tpl', NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/modules/' . $module_file);
+$xtpl = new XTemplate('add_tu.tpl', NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/modules/' . $module_file);
 $xtpl->assign('LANG', $lang_module);
 $xtpl->assign('GLANG', $lang_global);
 $xtpl->assign('MODULE_NAME', $module_name);
@@ -37,7 +37,14 @@ if ($nv_Request->get_title('add_new','post')) {
     }
 
 }
+$sql_loaitu = "SELECT * FROM `nv4_vi_tudien_loaitudien` WHERE 1";
+$res_loaitu = $db->query($sql_loaitu);
 
+while ($res = $res_loaitu->fetch(PDO::FETCH_ASSOC)){
+    // ($nv_Request->get_int('loaitu','post') == $res['id'])? $res['selected'] = "selected" : $res['selected'] = "";
+    $xtpl->assign('DATA', $res);
+    $xtpl->parse('main.loaitu');
+}
 $xtpl->parse('main');
 $contents = $xtpl->text('main');
 
