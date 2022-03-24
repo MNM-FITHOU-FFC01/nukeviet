@@ -25,10 +25,12 @@ $xtpl->assign('MODULE_NAME', $module_name);
 if ($nv_Request->get_title('add_new','post')) {
     $name = $nv_Request->get_title('name','post');
     $time = time();
-    $sql_loaitu = "INSERT INTO `nv4_vi_tudien_loaitudien`(`id`, `tenloaitd`) VALUES ('$time','$name')";
-    $res_loaitu = $db->query($sql_loaitu)->rowCount();
-    // pr($res_loaitu);
-    if ($res_loaitu > 0) {
+    $nghiatu = $nv_Request->get_title('nghiatu','post');
+    $loaitu = $nv_Request->get_title('loaitu','post');
+
+    $sql_tu = "INSERT INTO `nv4_vi_tudien_tu`(`id`, `tentu`, `nghiatu`, `id_loaitu`) VALUES ('$time','$name','$nghiatu','$loaitu')";
+    $res_tu = $db->query($sql_tu)->rowCount();
+    if ($sql_tu > 0) {
         $xtpl->assign('mess', "Thêm dữ liệu thành công");
         $xtpl->parse('main.mess');
     }else{
