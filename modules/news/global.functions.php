@@ -101,8 +101,13 @@ function nv_del_content_module($id)
     global $db, $module_name, $module_data, $title, $lang_module, $module_config;
     $content_del = 'NO_' . $id;
     $title = '';
-    list($id, $listcatid, $title) = $db->query('SELECT id, listcatid, title FROM ' . NV_PREFIXLANG . '_' . $module_data . '_rows WHERE id=' . (int) $id)->fetch(3);
+    list($id, $listcatid, $title, $homeimgfile) = $db->query('SELECT id, listcatid, title, homeimgfile FROM ' . NV_PREFIXLANG . '_' . $module_data . '_rows WHERE id=' . (int) $id)->fetch(4);
+    
     if ($id > 0) {
+        $filename = NV_ROOTDIR.'/uploads/news/'.$homeimgfile;
+        if (file_exists($filename)) {
+            unlink($filename);
+          }
         $number_no_del = 0;
         $array_catid = explode(',', $listcatid);
         foreach ($array_catid as $catid_i) {

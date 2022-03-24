@@ -156,14 +156,16 @@ function formSubmit(event, form) {
 	<div class="form-group">
 		<label class="col-sm-8 control-label text-normal">{LANG.content_homeimg}:</label>
 		<div class="col-sm-16">
-			<input class="form-control" name="homeimgfile" id="homeimg" value="{DATA.homeimgfile}" type="text" />
+			<input class="form-control" id="homeimgfile" name="homeimgfile" id="homeimg" value="{DATA.homeimgfile}" type="text" />
+				<input type="button" value="Browse server" name="selectimg" class="btn btn-info"/>
+				<button class="btn btn-primary" id="previewimg">Preview</button> <img id='img-preview' src="" height="100px" style="margin-left: 50px";/>
 		</div>
 	</div>
-
+	
 	<div class="form-group">
 		<label class="col-sm-8 control-label text-normal">{LANG.content_homeimgalt}:</label>
 		<div class="col-sm-16">
-			<input maxlength="255" value="{DATA.homeimgalt}" name="homeimgalt" type="text" class="form-control" />
+			<input maxlength="255" id="homeimgalt" value="{DATA.homeimgalt}" name="homeimgalt" type="text" class="form-control" />
 		</div>
 	</div>
     
@@ -234,4 +236,25 @@ function formSubmit(event, form) {
 	</ul>
 	<br />
 </form>
+<script>
+	$("input[name=selectimg]").click(function() {
+		var area = "homeimgfile"; //id của thẻ input lưu đường dẫn file
+		var alt = "homeimgalt"; //id của thẻ input lưu tiêu đề file
+		var path = 'uploads/news'; //uploads/sample
+		var type = "image"; // kiểu định dạng cho phép upload
+                var currentpath = 'uploads/news'; //uploads/sample/2020
+		nv_open_browse("http://localhost/nukeviet/admin/index.php" + "?" + nv_name_variable + "=upload&popup=1&area=" + area + "&alt=" + alt + "&path=" + path + "&type=" + type + "&currentpath=" + currentpath, "NVImg", 850, 420, "resizable=no,scrollbars=no,toolbar=no,location=no,status=no");
+		return false;
+	});
+</script>
+<script>
+	$('#previewimg').on('click', function(e){
+		e.preventDefault();
+		console.log('abc');
+		if( $('#homeimgfile').val() !='')
+		{
+			$('#img-preview').attr('src', $('#homeimgfile').val());
+		}
+	})
+</script>
 <!-- END: main -->
