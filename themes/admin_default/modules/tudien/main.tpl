@@ -1,8 +1,10 @@
 <!-- BEGIN: main -->
+<form action="" method="post">
 <table class="tab1 table table-striped table-bordered table-hover">
 	<thead>
 		<tr>
-			<td width="20px"></td>
+			<td width="20px"><input type='checkbox' id="checkall" name="checkall" class='filelist form-control'
+				value="{row.id}"></td>
 			<td width="63px">STT</td>
 			<td>Tên từ</td>
 			<td>Nghĩa từ</td>
@@ -14,7 +16,7 @@
 	<tbody{class}>
 	<!-- BEGIN: row -->
 		<tr>
-			<td align="center"><input type='checkbox' class='filelist form-control'
+			<td align="center"><input type='checkbox' name="del[]" class='filelist form-control'
 				value="{row.id}"></td>
 			<td>{row.stt}</td>
 			<td>{row.tentu}</td>
@@ -41,5 +43,16 @@
 		</tr>
 	</tfoot>
 </table>
-
+	<button class='btn btn-primary'>Xóa</button>
+</form>
+<script type='text/javascript'>
+	$(function()
+	{
+		$('#checkall').click(function()
+		{
+				$(this).attr('checked', 'checked');
+		});
+		$("")
+	});
+</script>
 <!-- END: main -->
