@@ -20,10 +20,22 @@
 		<tr>
 			<td style="background:#eee;">
 				<form id="formAdd" name="formAdd" method="post" action="">
-					<table style="width:100%; border:0" cellpadding="0" cellspacing="0">
+				<table style="width:100%; border:0; margin-top: 10px" cellpadding="0" cellspacing="0">
+						<tr>
+							<td style="background:#eee;" width="100">Id</td>
+							<td style="background:#eee;"><input type="text" name="id" class="form-control" id="id" style="width:50%;" value=""/></td>
+						</tr>
+					</table>
+					<table style="width:100%; border:0; margin-top: 10px" cellpadding="0" cellspacing="0">
 						<tr>
 							<td style="background:#eee;" width="100">Tên loại từ</td>
-							<td style="background:#eee;"><input type="text" name="name" class="form-control" id="name" style="width:50%;" value="{DATA.name}"/></td>
+							<td style="background:#eee;"><input type="text" name="name" class="form-control" id="name" style="width:50%;" value=""/></td>
+						</tr>
+					</table>
+					<table style="width:100%; border:0; margin-top: 10px" cellpadding="0" cellspacing="0">
+						<tr>
+							<td style="background:#eee;" width="100">Tên viết tắt</td>
+							<td style="background:#eee;"><input type="text" name="tenviettat" class="form-control" id="tenviettat" style="width:50%;" value=""/></td>
 						</tr>
 					</table>
 					<table style="width:100%; border:0; margin-top: 10px" cellpadding="0" cellspacing="0">
@@ -38,14 +50,5 @@
 		</tr>
 	</tbody>
 </table>
-<script type="text/javascript">
-	$("input[name=selectimg]").click(function()
-	{
-		var area = "pic_path"; // return value area
-		var type = "image";
-		var path = "{PATH}";
-		nv_open_browse_file("{BROWSER}");
-		return false;
-	});
-</script>
+
 <!-- END: main -->
