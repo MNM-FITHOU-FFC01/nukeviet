@@ -6,11 +6,9 @@
 </div>
 <div class="row">
 	[MAIN]
+	{MODULE_CONTENT}
 </div>
 
-<div class="row">
-	[FOOTER]
-</div>
 {FILE "footer_extended.tpl"}
 {FILE "footer_only.tpl"}
 <!-- END: main -->

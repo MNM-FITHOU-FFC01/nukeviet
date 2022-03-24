@@ -21,6 +21,9 @@
         </script>
     </head>
     <body>
+    <div id="header_fixed">
+        <p>Thông báo - Tin tức (New)</p> <button type="button" class="btn btn-outline-secondary" style="border: 1px solid black; margin-left: 10px;"> Xem</button>
+    </div>
     <div id="menu_fixed">
         [LOGO]
         [MENU]
