@@ -10,27 +10,25 @@
             <td width="100px" align="center">Chức năng</td>
 		</tr>
 	</thead>
-	<!-- BEGIN: row -->
+	
 	<tbody{class}>
+	<!-- BEGIN: row -->
 		<tr>
 			<td align="center"><input type='checkbox' class='filelist form-control'
-				value="{id}"></td>
-			<td><!-- BEGIN: sel --> <select class="sel_w form-control" style="width: 60px;"
-				id="{SEL_W}">
-				<!-- BEGIN: sel_op -->
-				<option {SELECT} value="{VAL}">{VAL}</option>
-				<!-- END: sel_op -->
-			</select> <!-- END: sel --></td>
-			<td><a href="{LINK_ALBUM}">{name}</a></td>
-			<td width="50px" align="center"><a href="{URL_ACTIVE}" class="active label label-success">{active}</a>
+				value="{row.id}"></td>
+			<td>{row.stt}</td>
+			<td>{row.tentu}</td>
+			<td>{row.nghiatu}</td>
+			<td>{row.tenloaitd}</a>
 			</td>
 			<td width="200px"  align="center"><span class="edit_icon"><a class='editfile btn btn-primary btn-xs'
-				href="{URL_EDIT}">{LANG.edit}</a></span>&nbsp;-&nbsp; <span
-				class="delete_icon"><a class='delfile btn btn-danger btn-xs' href="{URL_DEL_ONE}">{LANG.album_delete}</a></span>
+				href="{URL_EDIT}">Sửa</a></span>&nbsp;-&nbsp; <span
+				class="delete_icon"><a class='delfile btn btn-danger btn-xs' href="{URL_DEL_ONE}">Xóa</a></span>
 			</td>
 		</tr>
+	<!-- END: row -->	
 	</tbody>
-	<!-- END: row -->
+	
 </table>
 <table class="tab1">
 	<tfoot>

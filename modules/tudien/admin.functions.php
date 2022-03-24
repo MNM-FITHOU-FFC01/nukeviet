@@ -15,7 +15,7 @@ $submenu['add'] = "Thêm loại từ điển";
 $submenu['dich'] = "Dịch nghĩa từ";
 
 $allow_func = array( 
-    'main', 'add_tu', 'add' , 'dich'
+    'main', 'add_tu', 'add' , 'dich', 'del_tu'
 );
 // $allow_func = array('main', 'add_ab', 'add_img', 'sort_img','copy_img', 'del_albums', 'del_lalbums', 'listimg', 'del_imgs', 'del_limgs', 'active', 'sort');
 
