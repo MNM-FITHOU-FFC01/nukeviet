@@ -595,9 +595,10 @@ $(function() {
     }
 
     //Tip + Ftip
-    $("[data-toggle=collapse]").click(function() {
-        tipHide();
-        ftipHide();
+    $("#show_menu").click(function() {
+        // tipHide();
+        // ftipHide();
+        $("#menu_fixed").toggle('slow');
     });
 
     $(document).on("keydown", function(a) {

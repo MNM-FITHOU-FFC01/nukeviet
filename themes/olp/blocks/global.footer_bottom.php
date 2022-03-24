@@ -13,106 +13,76 @@ if (!defined('NV_MAINFILE')) {
     exit('Stop!!!');
 }
 
-if (!nv_function_exists('nv_copyright_info')) {
+if (!nv_function_exists('nv_footer_info')) {
     /**
-     * nv_copyright_info_config()
+     * nv_footer_info_config()
      *
      * @return string
      */
-    function nv_copyright_info_config()
+    function nv_footer_info_config()
     {
         global $lang_global, $data_block;
 
         $html = '<div class="form-group">';
-        $html .= '<label class="control-label col-sm-6">' . $lang_global['copyright_by'] . ':</label>';
-        $html .= '<div class="col-sm-18"><input class="form-control" type="text" name="copyright_by" value="' . nv_htmlspecialchars($data_block['copyright_by']) . '"></div>';
+        $html .= '<label class="control-label col-sm-6">Tên trang:</label>';
+        $html .= '<div class="col-sm-18"><input class="form-control" type="text" name="tentrang" value="' . $data_block['tentrang'] . '"></div>';
         $html .= '</div>';
         $html .= '<div class="form-group">';
-        $html .= '<label class="control-label col-sm-6">' . $lang_global['copyright_url'] . ':</label>';
-        $html .= '<div class="col-sm-18"><input class="form-control" type="text" name="copyright_url" value="' . nv_htmlspecialchars($data_block['copyright_url']) . '"></div>';
+        $html .= '<label class="control-label col-sm-6">Mô tả ngắn gọn:</label>';
+        $html .= '<div class="col-sm-18"><input class="form-control" type="text" name="mota" value="' . $data_block['mota'] . '"></div>';
         $html .= '</div>';
         $html .= '<div class="form-group">';
-        $html .= '<label class="control-label col-sm-6">' . $lang_global['design_by'] . ':</label>';
-        $html .= '<div class="col-sm-18"><input class="form-control" type="text" name="design_by" value="' . nv_htmlspecialchars($data_block['design_by']) . '"></div>';
+        $html .= '<label class="control-label col-sm-6">Thông tin liên hệ:</label>';
+        $html .= '<div class="col-sm-18"><input class="form-control" type="text" name="thongtinlienhe" value="' . $data_block['thongtinlienhe'] . '"></div>';
         $html .= '</div>';
-        $html .= '<div class="form-group">';
-        $html .= '<label class="control-label col-sm-6">' . $lang_global['design_url'] . ':</label>';
-        $html .= '<div class="col-sm-18"><input class="form-control" type="text" name="design_url" value="' . nv_htmlspecialchars($data_block['design_url']) . '"></div>';
-        $html .= '</div>';
-        $html .= '<div class="form-group">';
-        $html .= '<label class="control-label col-sm-6">' . $lang_global['siteterms_url'] . ':</label>';
-        $html .= '<div class="col-sm-18"><input class="form-control" type="text" name="siteterms_url" value="' . nv_htmlspecialchars($data_block['siteterms_url']) . '"></div>';
-        $html .= '</div>';
-
         return $html;
     }
 
     /**
-     * nv_copyright_info_submit()
+     * nv_footer_info_submit()
      *
      * @return array
      */
-    function nv_copyright_info_submit()
+    function nv_footer_info_submit()
     {
         global $nv_Request;
 
         $return = [];
         $return['error'] = [];
-        $return['config']['copyright_by'] = $nv_Request->get_title('copyright_by', 'post');
-        $return['config']['copyright_url'] = $nv_Request->get_title('copyright_url', 'post');
-        $return['config']['design_by'] = $nv_Request->get_title('design_by', 'post');
-        $return['config']['design_url'] = $nv_Request->get_title('design_url', 'post');
-        $return['config']['siteterms_url'] = $nv_Request->get_title('siteterms_url', 'post');
-
+        $return['config']['tentrang'] = $nv_Request->get_title('tentrang', 'post');
+        $return['config']['mota'] = $nv_Request->get_title('mota', 'post');
+        $return['config']['thongtinlienhe'] = $nv_Request->get_title('thongtinlienhe', 'post');
         return $return;
     }
 
     /**
-     * nv_copyright_info()
+     * nv_footer_info()
      *
      * @param array $block_config
      * @return string
      */
-    function nv_copyright_info($block_config)
+    function nv_footer_info($block_config)
     {
         global $global_config, $lang_global;
 
-        if (file_exists(NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/blocks/global.copyright.tpl')) {
+        if (file_exists(NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/blocks/global.footer_bottom.tpl')) {
             $block_theme = $global_config['module_theme'];
-        } elseif (file_exists(NV_ROOTDIR . '/themes/' . $global_config['site_theme'] . '/blocks/global.copyright.tpl')) {
+        } elseif (file_exists(NV_ROOTDIR . '/themes/' . $global_config['site_theme'] . '/blocks/global.footer_bottom.tpl')) {
             $block_theme = $global_config['site_theme'];
         } else {
             $block_theme = 'default';
         }
 
-        $xtpl = new XTemplate('global.copyright.tpl', NV_ROOTDIR . '/themes/' . $block_theme . '/blocks');
+        $xtpl = new XTemplate('global.footer_bottom.tpl', NV_ROOTDIR . '/themes/' . $block_theme . '/blocks');
         $xtpl->assign('LANG', $lang_global);
+        $tentrang= $block_config['tentrang'];
+        $mota= $block_config['mota'];
+        $thongtinlienhe= $block_config['thongtinlienhe'];
 
-        if (empty($block_config['copyright_by'])) {
-            $block_config['copyright_by'] = $global_config['site_name'];
-        }
-        if (empty($block_config['copyright_url'])) {
-            $block_config['copyright_url'] = 'http://' . $global_config['my_domains'][0];
-        }
+        $xtpl->assign('tentrang', $tentrang);
+        $xtpl->assign('mota', $mota);
+        $xtpl->assign('thongtinlienhe', $thongtinlienhe);
 
-        $xtpl->assign('DATA', $block_config);
-        $xtpl->parse('main.copyright_by.copyright_url');
-        $xtpl->parse('main.copyright_by.copyright_url2');
-        $xtpl->parse('main.copyright_by');
-
-        if (!empty($block_config['design_by'])) {
-            if (!empty($block_config['design_url'])) {
-                $xtpl->parse('main.design_by.design_url');
-                $xtpl->parse('main.design_by.design_url2');
-            }
-            $xtpl->parse('main.design_by');
-        }
-        if (!empty($block_config['siteterms_url'])) {
-            $xtpl->parse('main.siteterms_url');
-        }
-        if (defined('NV_IS_SPADMIN')) {
-            $xtpl->parse('main.memory_time_usage');
-        }
         $xtpl->parse('main');
 
         return $xtpl->text('main');
@@ -120,5 +90,5 @@ if (!nv_function_exists('nv_copyright_info')) {
 }
 
 if (defined('NV_SYSTEM')) {
-    $content = nv_copyright_info($block_config);
+    $content = nv_footer_info($block_config);
 }
