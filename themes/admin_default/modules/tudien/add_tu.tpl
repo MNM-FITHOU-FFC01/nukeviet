@@ -48,7 +48,7 @@
 							<td style="background:#eee;" width="100">Nghĩa của từ</td>
 							<td style="background:#eee;">
                                 <div class="form-group">
-                                    <input type="text" name="name" class="form-control" id="nghiatu" style="width:50%;" value=""/>
+                                    <textarea class="frm-item form-control" id="nghiatu" name="nghiatu" rows="10" style="width:50%;"></textarea>
                                 </div>
                             </td>
 						</tr>
