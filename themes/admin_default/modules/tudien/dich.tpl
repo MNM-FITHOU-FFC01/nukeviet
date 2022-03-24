@@ -1,4 +1,7 @@
 <!-- BEGIN: main -->
+<!-- BEGIN: mess -->
+<div class="alert alert-info">{mess.mess}</div>
+<!-- END: mess -->
 <form action="" method="post" >
     <div class="table-responsive">
         <table id="edit" class="table table-striped table-bordered table-hover">

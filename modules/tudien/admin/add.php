@@ -23,19 +23,23 @@ $xtpl->assign('GLANG', $lang_global);
 $xtpl->assign('MODULE_NAME', $module_name);
 
 if ($nv_Request->get_title('add_new','post')) {
-    $name = $nv_Request->get_title('name','post');
-    $time = time();
-    $sql_loaitu = "INSERT INTO `nv4_vi_tudien_loaitudien`(`id`, `tenloaitd`) VALUES ('$time','$name')";
-    $res_loaitu = $db->query($sql_loaitu)->rowCount();
-    // pr($res_loaitu);
-    if ($res_loaitu > 0) {
-        $xtpl->assign('mess', "Thêm dữ liệu thành công");
-        $xtpl->parse('main.mess');
+    if ($nv_Request->get_title('name','post')){
+        $name = $nv_Request->get_title('name','post');
+        $time = time();
+        $sql_loaitu = "INSERT INTO `nv4_vi_tudien_loaitudien`(`id`, `tenloaitd`) VALUES ('$time','$name')";
+        $res_loaitu = $db->query($sql_loaitu)->rowCount();
+        // pr($res_loaitu);
+        if ($res_loaitu > 0) {
+            $xtpl->assign('mess', "Thêm dữ liệu thành công");
+            $xtpl->parse('main.mess');
+        }else{
+            $xtpl->assign('mess', "Thêm dữ liệu không thành công");
+            $xtpl->parse('main.mess');
+        }
     }else{
-        $xtpl->assign('mess', "Thêm dữ liệu không thành công");
+        $xtpl->assign('mess', "Phải nhập đủ dữ liệu");
         $xtpl->parse('main.mess');
     }
-
 }
 
 $xtpl->parse('main');
