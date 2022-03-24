@@ -28,7 +28,7 @@ if ($nv_Request->get_title('add_new','post')) {
         $time = time();
         $sql_loaitu = "INSERT INTO `nv4_vi_tudien_loaitudien`(`id`, `tenloaitd`) VALUES ('$time','$name')";
         $res_loaitu = $db->query($sql_loaitu)->rowCount();
-        // pr($res_loaitu);
+        
         if ($res_loaitu > 0) {
             $xtpl->assign('mess', "Thêm dữ liệu thành công");
             $xtpl->parse('main.mess');
@@ -40,6 +40,32 @@ if ($nv_Request->get_title('add_new','post')) {
         $xtpl->assign('mess', "Phải nhập đủ dữ liệu");
         $xtpl->parse('main.mess');
     }
+}
+
+if ($nv_Request->get_title('xoa','post')) {
+    $id = $nv_Request->get_title('xoa','post');
+    $sql = "DELETE FROM `nv4_vi_tudien_loaitudien` WHERE `id` = $id";
+    $ress = $db->query($sql)->rowCount();
+        
+        if ($ress > 0) {
+            $xtpl->assign('mess', "xoa dữ liệu thành công");
+            $xtpl->parse('main.mess');
+        }else{
+            $xtpl->assign('mess', "xoa dữ liệu không thành công");
+            $xtpl->parse('main.mess');
+        }  
+}
+if ($nv_Request->get_title('sua','post')) {
+    
+}
+
+$sql = "SELECT * FROM `nv4_vi_tudien_loaitudien` WHERE 1";
+$res = $db->query($sql);
+$i=1;
+while ($row = $res->fetch(PDO::FETCH_ASSOC)){
+    $row['stt'] = $i++;
+    $xtpl->assign('row', $row);
+    $xtpl->parse('main.row');
 }
 
 $xtpl->parse('main');

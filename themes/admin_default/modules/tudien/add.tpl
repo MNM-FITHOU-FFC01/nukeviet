@@ -53,5 +53,49 @@
 		</tr>
 	</tbody>
 </table>
+<form method="post" action="">
+<table style="width: 50%;" class="tab1 table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+			<td width="20px"></td>
+			<td width="63px">STT</td>
+			<td>Tên loaị từ</td>
+            <td width="100px" align="center">Chức năng</td>
+		</tr>
+	</thead>
+	
+	<tbody{class}>
+	<!-- BEGIN: row -->
+		<tr>
+			<td align="center"><input type='checkbox' class='filelist form-control'
+				value="{row.id}"></td>
+			<td>{row.stt}</td>
+			<td>{row.tenloaitd}</td>
+			</td>
+			<td width="200px"  align="center">
+				<span  class="edit_icon">
+					<button class="btn btn-primary" type="submit" name="sua" value="{row.id}">Sửa</button>
+				</span>&nbsp;-&nbsp; <span
+				class="delete_icon">
+				<button class="btn btn-danger" name="xoa" type="submit" value="{row.id}">Xóa</button>
+			</span>
+			</td>
+		</tr>
+	<!-- END: row -->	
+	</tbody>
+	
+</table>
+</form>
+<table class="tab1">
+	<tfoot>
+		<tr>
+			<td><span><a href='javascript:void(0);' id='checkall'>{LANG.album_checkall}</a>&nbsp;&nbsp;<a
+				href='javascript:void(0);' id='uncheckall'>{LANG.album_uncheckall}</a>&nbsp;&nbsp;</span>
+			<span class="add_icon"><a class='addfile' href="{LINK_ADD}">{LANG.album_add}</a>&nbsp;&nbsp;</span>
+			<span class="delete_icon"><a id='delfilelist'
+				href="javascript:void(0);">{LANG.album_delete}</a></span></td>
+		</tr>
+	</tfoot>
+</table>
 
 <!-- END: main -->
