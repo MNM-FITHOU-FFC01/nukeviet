@@ -1,5 +1,8 @@
 <!-- BEGIN: main -->
 <script src="{NV_BASE_SITEURL}/themes/admin_default/js/album.js"></script>
+<!-- BEGIN: mess -->
+<div class="alert alert-info">{mess.mess}</div>
+<!-- END: mess -->
 <!-- BEGIN: err -->
 <div class="quote" style="width:780px;">
 	<blockquote class="error">

@@ -10,15 +10,16 @@
 if(!defined('NV_ADMIN') or !defined('NV_MAINFILE') or !defined('NV_IS_MODADMIN'))
 	die('Stop!!!');
 
+$submenu['add_tu'] = "Thêm từ";
 $submenu['add'] = "Thêm loại từ điển";
 $submenu['dich'] = "Dịch nghĩa từ";
 
 $allow_func = array( 
-    'main', 'add' , 'dich' 
+    'main', 'add_tu', 'add' , 'dich'
 );
 // $allow_func = array('main', 'add_ab', 'add_img', 'sort_img','copy_img', 'del_albums', 'del_lalbums', 'listimg', 'del_imgs', 'del_limgs', 'active', 'sort');
 
 define('NV_IS_TUDIEN', true);
-// pr(1);
+
 
 ?>
